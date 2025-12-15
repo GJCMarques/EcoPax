@@ -1,0 +1,109 @@
+/* style.css - Advanced Custom Styling */
+:root {
+    --primary: #2A7B88; /* Teal/Petrol */
+    --secondary: #88C46C; /* Leaf Green */
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --glass: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+}
+
+/* Smooth Scrolling & Typography */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--light);
+    overflow-x: hidden;
+}
+
+/* --- ADVANCED ANIMATIONS --- */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 0 0 rgba(136, 196, 108, 0.4); }
+    70% { box-shadow: 0 0 0 20px rgba(136, 196, 108, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(136, 196, 108, 0); }
+}
+
+@keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-custom {
+    animation: pulse-glow 2s infinite;
+}
+
+/* --- GLASSMORPHISM EFFECTS --- */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.glass-nav {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* --- CUSTOM TEXT GRADIENTS --- */
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-x 8s ease infinite;
+}
+
+/* --- COMPLEX SHAPES --- */
+.blob-bg {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    z-index: -1;
+}
+
+/* --- DASHBOARD SPECIFICS --- */
+.sidebar-link {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--secondary);
+    transform: scaleY(0);
+    transition: transform 0.3s;
+}
+
+.sidebar-link:hover::before, .sidebar-link.active::before {
+    transform: scaleY(1);
+}
+
+.chart-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+}   
